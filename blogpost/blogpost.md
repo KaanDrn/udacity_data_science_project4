@@ -31,7 +31,7 @@ Some datasets have additional features and the datasets themselves are described
 The first task in this marketing campaign is trying to identified people, who are not already customers, that can potentially be acquired as customers. Therefore we will identify people in the azdias dataset that are most similar to our customer dataset.
 For that purpose we will cluster the population data in multiple clusters and analyse if the customer dataset is visibly separable from the population.
 Since the dataset contain a lot of features and a lot of people, we want to reduce the data without loosing information. To achieve that, we are going to test two dimension reduction methods and compare them with each other. After the dimension reduction, we will cluster the data using a standard clustering method, the Kmeans method.
-![Clustering pipeline](pictures/infrastructur_clustering_pipeline.drawio.png)
+![Clustering pipeline](pictures/infrastructure_clustering_pipeline.drawio.png)
 
 
 ### Dimension reduction
@@ -54,7 +54,7 @@ We can also see, that the group of people who reacted to the mail campaign are u
 The classification pipeline, as it can be seen below, consists of the sklearn Standard Scaler and a Suppert Vector Machine Classifier. The input data is the feature set, which we also had in the first part of the analysis and additionally the cluster labels, that were assigned by the clustering pipeline from part one. The aim of the grid search was to optimize the F1 score, which we selected as the appropriate metrics for this task.  
 The results have shown, that a linear kernel performs best. With that in mind, the SVC was again optimised for different parameters for the SVC.
 
-![Classification Pipeline](pictures/infrastructur_classification_pipeline.drawio.png.png)
+![Classification Pipeline](pictures/infrastructure_classification_pipeline.drawio.png.png)
 
 The initial approach to train the model would be to just start the training with the data and run a grid-search and cross-validation to tune the classifier in a more efficient way. The results are sobering since the F1 score is at 0.0230. The reason for the low performance of the model is probably due to the previously mentioned imbalance in the labels.
 To overcome that, two simple approaches were applied. First, down-sampling was applied, which reduces the majorly representative class to the same size as the under-represented class. This helps to further reduce the data quantity and to balance out the two data-classes. This helped improve the f1 score drastically to 0.5683, but the score is still bad in general.
